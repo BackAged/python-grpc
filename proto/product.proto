@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+
+package product;
+
+service ProductService {
+  rpc Hello(HelloReq) returns (HelloRes) {}
+  rpc CreateProduct(Product) returns (Product) {}
+  rpc GetProduct(GetProductReq) returns (Product) {}
+  rpc ListProducts(ListProductsReq) returns (stream Product) {}
+}
+
+message Product {
+    string code = 1;
+    string productName = 2;
+    int32 quantity = 3;
+    float price = 4;
+    string imageLink = 5;
+    string description = 6;
+}
+
+message GetProductReq {
+  string code = 1;
+}
+
+message ListProductsReq {
+  int32 skip = 1;
+  int32 limit = 2;
+}
+
+message HelloRes {
+  string message = 1;
+}
+
+message HelloReq {
+
+}
